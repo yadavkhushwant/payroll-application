@@ -1,0 +1,61 @@
+# =======================
+# Root-level ignores
+# =======================
+*.log
+.DS_Store
+.env*
+*.env
+*.local
+
+# Ignore OS/system files
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# =======================
+# Client - Next.js + Yarn
+# =======================
+/client/node_modules/
+/client/.next/
+/client/.turbo/
+/client/.eslintcache
+/client/out/
+/client/.env*
+
+# Yarn specific
+/client/yarn-error.log
+
+# VSCode config (optional, if you don’t want to share settings)
+/client/.vscode/
+
+# =======================
+# Server - Java (Maven)
+# =======================
+/server/target/
+/server/.classpath
+/server/.project
+/server/.settings/
+/server/.idea/
+/server/*.iml
+/server/logs/
+!/server/src/main/resources/static/  # if you're building frontend to backend
+
+# Maven wrapper binaries
+/server/mvnw
+/server/mvnw.cmd
+/server/.mvn/
+
+# Java environment files
+/server/.env*
+
+# =======================
+# Editor/IDE configs (global)
+# =======================
+*.swp
+*~
+*.sublime-workspace
+*.sublime-project
+.idea/
+*.iml
+.vscode/
