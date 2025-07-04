@@ -1,0 +1,6 @@
+-- File: departments.sql
+
+CREATE TABLE IF NOT EXISTS departments
+( id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ;
