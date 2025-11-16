@@ -81,6 +81,7 @@ public class BusinessService {
 
         UserEntity userEntity = new UserEntity();
         userEntity.setEmail(dto.getEmail());
+        userEntity.setPhone(dto.getPhone());
         userEntity.setPassword(passwordEncoder.encode(dto.getPassword()));
         userEntity.setRoleId(adminRole.getId());
 

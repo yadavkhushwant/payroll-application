@@ -1,0 +1,40 @@
+-- File: employee_loans.sql
+
+CREATE TABLE IF NOT EXISTS employee_loans (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    employee_id BIGINT NOT NULL,
+    loan_type_id BIGINT NOT NULL,
+    loan_amount DECIMAL(12,2) NOT NULL,
+    outstanding_amount DECIMAL(12,2) NOT NULL,
+    monthly_deduction DECIMAL(12,2),
+    total_installments INT,
+    paid_installments INT NOT NULL DEFAULT 0,
+    interest_rate DECIMAL(5,2),
+    loan_date DATE NOT NULL,
+    start_deduction_from DATE,
+    expected_completion_date DATE,
+    actual_completion_date DATE,
+    status ENUM('PENDING_APPROVAL', 'APPROVED', 'ACTIVE', 'COMPLETED', 'CANCELLED', 'DEFAULTED', 'REJECTED') NOT NULL DEFAULT 'PENDING_APPROVAL',
+    approved_by VARCHAR(100),
+    approval_date DATE,
+    remarks TEXT,
+    purpose VARCHAR(255),
+    guarantor_name VARCHAR(255),
+    guarantor_employee_id BIGINT,
+    is_active BOOLEAN NOT NULL DEFAULT TRUE,
+    created_by VARCHAR(100),
+    updated_by VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+    CONSTRAINT fk_employee_loans_employee FOREIGN KEY (employee_id) REFERENCES employees(id),
+    CONSTRAINT fk_employee_loans_type FOREIGN KEY (loan_type_id) REFERENCES loan_types(id),
+    CONSTRAINT fk_employee_loans_guarantor FOREIGN KEY (guarantor_employee_id) REFERENCES employees(id),
+    
+    INDEX idx_employee_loans_employee (employee_id),
+    INDEX idx_employee_loans_type (loan_type_id),
+    INDEX idx_employee_loans_status (status),
+    INDEX idx_employee_loans_active (is_active),
+    INDEX idx_employee_loans_deduction_date (start_deduction_from),
+    INDEX idx_employee_loans_completion (expected_completion_date)
+);

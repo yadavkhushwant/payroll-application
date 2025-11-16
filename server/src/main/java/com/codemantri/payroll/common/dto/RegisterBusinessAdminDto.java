@@ -6,5 +6,6 @@ import lombok.Data;
 public class RegisterBusinessAdminDto {
     private Long tenantId;
     private String email;
+    private String phone;
     private String password;
 }

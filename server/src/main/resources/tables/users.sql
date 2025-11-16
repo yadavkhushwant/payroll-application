@@ -1,8 +1,9 @@
 -- File: users.sql
 
 CREATE TABLE IF NOT EXISTS users (
-                                     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                                     email VARCHAR(255) UNIQUE,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) UNIQUE,
+    phone VARCHAR(20) UNIQUE;
     password VARCHAR(255),
     role_id BIGINT NOT NULL,
     is_active BOOLEAN NOT NULL DEFAULT TRUE,
